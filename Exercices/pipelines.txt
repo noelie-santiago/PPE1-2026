@@ -1,1 +1,43 @@
 ##Exercice 1.a
+  cd Exercice1/ann
+  echo "Annotations en 2016:" > comptes.txt
+  cat 2016/*/*.ann | wc -l >> comptes.txt
+  echo "Annotations en 2017:" >> comptes.txt
+  cat 2017/*/*.ann | wc -l >> comptes.txt
+  echo "Annotations en 2018:" >> comptes.txt
+  cat 2018/*/*.ann | wc -l >> comptes.txt
+  mv ~/Exercice1/ann/comptes.txt ~/cours_info/PPE1-2026/Exercices/
+  git add comptes.txt 
+  git commit -m "ajout exercice1 sur pipelines"
+  git push
+
+##Exercice 1.b
+  cd ~/cours_info/PPE1_2026/
+  echo "Annotations en 2016:" > locations.txt
+  cat ~/Exercice1/ann/2016/*/* | grep "Location" | wc -l >>locations.txt
+  echo "Annotations en 2017:" >> locations.txt
+  cat ~/Exercice1/ann/2017/*/* | grep "Location" | wc -l >>locations.txt
+  echo "Annotations en 2018:" >> locations.txt
+  cat ~/Exercice1/ann/2018/*/* | grep "Location" | wc -l >>locations.txt
+  mv locations.txt Exercices/
+  git add -A
+  git commit -m "ajout exercice1.b pipelines"
+  git push
+
+##Exercice 2.a
+  cat ~/Exercice1/ann/2016/*/* | grep "Location" | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_2016.txt
+  cat ~/Exercice1/ann/2017/*/* | grep "Location" | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_2017.txt
+  cat ~/Exercice1/ann/2018/*/* | grep "Location" | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_2018.txt
+  mv classement* Exercices/
+  git add -A
+  git commit -m "ajout exercice2.a pipelines"
+  git push
+
+##Exercice 2.b
+  cat ~/Exercice1/ann/*/04*/* | grep "Location" | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_avril.txt
+  mv classement_avril.txt Exercices/
+  git add -A
+  git commit -m "ajout exercice2.b pipelines"
+  git push
+
+
